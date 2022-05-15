@@ -31,7 +31,6 @@ void greatingsFunction()
                break;
             }
 
-
             if(i==5 && k==30 )
             {
                std::cout<<message2;
@@ -275,25 +274,6 @@ void accountOpening::makeTransactionFile(std::string &fileName)
 
         file.close();
     }  
-
-    //   if(begin != end)
-    // {
-        
-    // file<<dt<<" "<<
-    
-    
-    
-    
-    // }
-
-
-
-    
-    // tm *gtm = gmtime(&t);
-    // dt = asctime(gtm);
-    // std::cout<<"local2 Date and Time :"<<dt<<std::endl;
-    
-
 }
 
     std::string accountOpening::generatePassword()
@@ -373,9 +353,9 @@ int accountOpening:: generateAccountNumber()
             file.get(ch);
             std::cout<<"at 40="<<ch<<std::endl;
         }
-    void showF()
-    {
-                 {
+             void showF()
+            {
+                {
 
             char ch;
             std::string str;
@@ -386,14 +366,6 @@ int accountOpening:: generateAccountNumber()
             std::cout<<"at 40="<<str<<std::endl;
         }
     }
-
-
-
-
-
-
-
-
 // Personal Information
 
 void personalBanking::personalBankingOptions()
@@ -473,10 +445,9 @@ void personalBanking::personalBankingOptions()
           else
           {
 
-              while(file.good())
-    {  
-                   std::cout<<"In loop :"<<std::endl;
-
+        while(file.good())
+        {  
+        std::cout<<"In loop :"<<std::endl;
         file.seekg(222, std::ios::cur);
         currentLocationPass = file.tellg();
         getline(file, readedPassword, ' '); 
@@ -601,12 +572,7 @@ void personalBanking::personForgotPassword()
                 std::cout<<"Transfer Amount: ";
             }
 
-
             std::cin>>withdrawlAmount;
-
-          
-    
-
             if(withdrawlAmount>1000000)
             {
                 std::cout<<"Amount cannot be greater than 1000000(10Lakhs)"<<std::endl;
@@ -636,73 +602,63 @@ void personalBanking::personForgotPassword()
                      personalBanking:: logEntry(accountNumber, currentAmountDouble, senderName, withdrawlAmount, option);
                      currentAmountDouble = currentAmountDouble + withdrawlAmount;
                      std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
-                 currentAmount = std::to_string(currentAmountDouble);
-                 std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
+                     currentAmount = std::to_string(currentAmountDouble);
+                     std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
 
-                int loop = currentAmount.size() - 8;
+                    int loop = currentAmount.size() - 8;
 
                     for(int i=1 ;i<=loop ;i++)
-                     {
+                   {
                         currentAmount.pop_back();
-                     }
+                   }
 
                  std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
                  
-                 file<<currentAmount;
-                file.close();
-                
+                file<<currentAmount;
+                file.close();         
 
                 }
-                if(currentAmountDouble >= withdrawlAmount && option == 2 )
-                {
-                      logEntry(accountNumber, currentAmountDouble, senderName, withdrawlAmount, option);
+
+            if(currentAmountDouble >= withdrawlAmount && option == 2 )
+             {
+                
+                 logEntry(accountNumber, currentAmountDouble, senderName, withdrawlAmount, option);
                  currentAmountDouble = currentAmountDouble - withdrawlAmount;
                  std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
                  currentAmount = std::to_string(currentAmountDouble);
                  std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
                  
-
                 for(int i=1 ;i<=3 ;i++)
                 {
                     currentAmount.pop_back();
                 }
-
                   std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
                   file<<currentAmount;
-
-                 file.close();
+                  file.close();
     
             }
-
-
-
-
              if(currentAmountDouble >= withdrawlAmount && option == 3)
                 {
-                    double d = currentAmountDouble;
+                     double d = currentAmountDouble;
                      std::cout<<"currentAmountDouble In OPTION 3="<<currentAmountDouble<<std::endl;
                    
-                    currentAmountDouble = currentAmountDouble - withdrawlAmount;
-                    std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
-                 currentAmount = std::to_string(currentAmountDouble);
-                 std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
+                     currentAmountDouble = currentAmountDouble - withdrawlAmount;
+                     std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
+                     currentAmount = std::to_string(currentAmountDouble);
+                     std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
 
-                int loop = currentAmount.size() - 8;
-
-                    for(int i=1 ;i<=loop ;i++)
+                     int loop = currentAmount.size() - 8;
+                     for(int i=1 ;i<=loop ;i++)
                      {
                         currentAmount.pop_back();
                      }
 
-                 std::cout<<"to string33333 ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
-                  file.seekp(backtrack, std::ios::beg);
-                 file<<currentAmount;
+                    std::cout<<"to string33333 ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
+                    file.seekp(backtrack, std::ios::beg);
+                    file<<currentAmount;
                     file.close();
-                     logEntry(accountNumber, d, senderName, withdrawlAmount, option);
+                    logEntry(accountNumber, d, senderName, withdrawlAmount, option);
                 }
-
-
-
             }
             else
             {
@@ -710,43 +666,36 @@ void personalBanking::personForgotPassword()
                 {   
                     file.seekg(222, std::ios::cur);
                     backtrack = file.tellp();
-
                     getline(file, accountNumber, ' ');
-                     file.seekg(backtrack, std::ios::beg);
+                    file.seekg(backtrack, std::ios::beg);
                     if(accountNumber == account)
                     {
                         file.seekg(9, std::ios::cur);
-                backtrack = file.tellg();
-                std::cout<<"tellg="<<backtrack<<std::endl;
-                backtrack = file.tellp();
-
-                std::cout<<"tellp="<<file.tellp()<<std::endl;
-                getline(file, currentAmount, ' ');
-                file.seekp(backtrack, std::ios::beg);
-                std::cout<<"currentAmount:"<<currentAmount<<std::endl;
-                double currentAmountDouble =  std::stod(currentAmount);
-                
+                        backtrack = file.tellg();
+                        std::cout<<"tellg="<<backtrack<<std::endl;
+                        backtrack = file.tellp();
+                        std::cout<<"tellp="<<file.tellp()<<std::endl;
+                        getline(file, currentAmount, ' ');
+                        file.seekp(backtrack, std::ios::beg);
+                        std::cout<<"currentAmount:"<<currentAmount<<std::endl;
+                        double currentAmountDouble =  std::stod(currentAmount);
                 if(option == 1)
                 {   
-                      logEntry(accountNumber, currentAmountDouble, senderName, withdrawlAmount, option);
+                     logEntry(accountNumber, currentAmountDouble, senderName, withdrawlAmount, option);
                      currentAmountDouble = currentAmountDouble + withdrawlAmount;
                      std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
-                 currentAmount = std::to_string(currentAmountDouble);
-                 std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
-
-                int loop = currentAmount.size() - 8;
-
-                    for(int i=1 ;i<=loop ;i++)
+                     currentAmount = std::to_string(currentAmountDouble);
+                     std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
+                     int loop = currentAmount.size() - 8;
+                     for(int i=1 ;i<=loop ;i++)
                      {
                         currentAmount.pop_back();
                      }
 
-                 std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
-                 
-                 file<<currentAmount;
+                std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;        
+                file<<currentAmount;
                 file.close();
-                 break;
-
+                break;  
                 }
                   if(currentAmountDouble <= withdrawlAmount && option == 2)
                 {
@@ -758,65 +707,53 @@ void personalBanking::personForgotPassword()
                     logEntry(accountNumber, currentAmountDouble, senderName, withdrawlAmount, option);
                     currentAmountDouble = currentAmountDouble - withdrawlAmount;
                     std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
-                 currentAmount = std::to_string(currentAmountDouble);
-                 std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
+                    currentAmount = std::to_string(currentAmountDouble);
+                    std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
 
-                int loop = currentAmount.size() - 8;
-
+                    int loop = currentAmount.size() - 8;
                     for(int i=1 ;i<=loop ;i++)
                      {
                         currentAmount.pop_back();
                      }
 
-                 std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
+                std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
                    
-                 file<<currentAmount;
+                file<<currentAmount;
                 file.close();
                  break;
                 }
 
                 if(currentAmountDouble >= withdrawlAmount && option == 3)
                 {
+                     std::cout<<"in loop option 3"<<std::endl;
+                     double d = currentAmountDouble;
+                     currentAmountDouble = currentAmountDouble - withdrawlAmount;
+                     std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
+                     currentAmount = std::to_string(currentAmountDouble);
+                     std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
 
-                    std::cout<<"in loop option 3"<<std::endl;
-                  double d = currentAmountDouble;
-                    currentAmountDouble = currentAmountDouble - withdrawlAmount;
-                    std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
-                 currentAmount = std::to_string(currentAmountDouble);
-                 std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
-
-                int loop = currentAmount.size() - 8;
+                    int loop = currentAmount.size() - 8;
 
                     for(int i=1 ;i<=loop ;i++)
                      {
                         currentAmount.pop_back();
                      }
 
-                 std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
-                 file<<currentAmount;
-                  file.close();
-                logEntry(accountNumber, d, senderName, withdrawlAmount, option);
-                 break;
-               
-
-
-
-
-
-                }
-
+                     std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount.size()<<std::endl;
+                     file<<currentAmount;
+                     file.close();
+                     logEntry(accountNumber, d, senderName, withdrawlAmount, option);
+                     break;
+                 }
                 }
                 if(file.good() ==0)
-         {
-             std::cout<<"No Customer with this credential found\n";
-             std::cout<<"Try with valid credentials."<<std::endl;
-         }
+            {
+               std::cout<<"No Customer with this credential found\n";
+               std::cout<<"Try with valid credentials."<<std::endl;
             }
-
-                }
-            }
-
-    
+        }
+          }
+            }  
     else
     {
         std::cout<<"Invalid Entry.Terminating Program...";
@@ -826,36 +763,29 @@ void personalBanking::personForgotPassword()
         
 void personalBanking::logEntry(std::string &accountNumber, double &currentAmount, std::string &senderName, double &transferAmount, int &option)
 {
-
-        int backtrack;
-        
-     
-      std::fstream file,file1,file2;
-     file.open("abc.txt", std::ios::in|std::ios::out);
- 
-           
-      std::string currentAmount1,accountNumber1,transferAmountS;
-
-      transferAmountS = std::to_string(transferAmount);
-      if(transferAmountS.size()>8)
-      {
-          while(transferAmountS.size()>8)
+    int backtrack; 
+    std::fstream file,file1,file2;
+    file.open("abc.txt", std::ios::in|std::ios::out);       
+    std::string currentAmount1,accountNumber1,transferAmountS;
+    transferAmountS = std::to_string(transferAmount);
+    if(transferAmountS.size()>8)
+    {
+        while(transferAmountS.size()>8)
         {
             transferAmountS.pop_back();
         }   
-      }
-
+    }
          if(transferAmountS.size()<=8)
-      {
-          while(transferAmountS.size()<=8)
-        {
-            transferAmountS.push_back(' ');
-        }   
-      }
-     std::string fileName2 = accountNumber + ".txt";
-    
-     time_t t1 = time(0);
-     char *dt1 = ctime(&t1); 
+          {
+              while(transferAmountS.size()<=8)
+            {
+                transferAmountS.push_back(' ');
+            }   
+          }
+     
+       std::string fileName2 = accountNumber + ".txt";
+       time_t t1 = time(0);
+       char *dt1 = ctime(&t1); 
         char ch;
         int i=0;
         std::string s;
@@ -870,11 +800,10 @@ void personalBanking::logEntry(std::string &accountNumber, double &currentAmount
         }
          std::string name = senderName;
 
-    for(int i=1 ; i<=10; i++)
-    {
-        name.pop_back();
-    }
-
+        for(int i=1 ; i<=10; i++)
+        {
+            name.pop_back();
+        }
         if(option == 1)
         {
             double netAmmount = transferAmount + currentAmount;
@@ -894,63 +823,52 @@ void personalBanking::logEntry(std::string &accountNumber, double &currentAmount
             file1.close();
         }  
 
-
           if(option == 3)
         {           
-                std::string senderAccountNumber;
-                std::cout<<"Enter the Account Number to whom you want to transfer: ";
-                std::cin>>senderAccountNumber;
+            std::string senderAccountNumber;
+            std::cout<<"Enter the Account Number to whom you want to transfer: ";
+            std::cin>>senderAccountNumber;
             std::string fileName = senderAccountNumber + ".txt";
-    
             file1.open(fileName, std::ios::app);
             file2.open(fileName2, std::ios::app);
-
             file.seekg(187, std::ios::beg);
             backtrack = file.tellg();   
             getline(file, accountNumber1, ' ');
             file.seekg(backtrack, std::ios::beg);
             std::cout<<"Account Number found1111: "<<accountNumber1<<"\n";
-
              if(accountNumber1 == senderAccountNumber)
-            {
+           {
                 file.seekg(9, std::ios::cur);
                 backtrack = file.tellg();
                 std::cout<<"tellg="<<backtrack<<std::endl;
                 backtrack = file.tellp();
-
                 std::cout<<"tellp="<<file.tellp()<<std::endl;
                 getline(file, currentAmount1, ' ');
                 file.seekp(backtrack, std::ios::beg);
                 std::cout<<"currentAmount1:"<<currentAmount1<<std::endl;
-                 double currentAmountDouble =  std::stod(currentAmount1);
-
-
+                double currentAmountDouble =  std::stod(currentAmount1);
                 currentAmountDouble = currentAmountDouble + transferAmount;
                 std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
-                 currentAmount1 = std::to_string(currentAmountDouble);
-                 std::cout<<"to string111212  currentAmountDouble="<<currentAmount1<<"and size ="<<currentAmount1.size()<<std::endl;
-
+                currentAmount1 = std::to_string(currentAmountDouble);
+                std::cout<<"to string111212  currentAmountDouble="<<currentAmount1<<"and size ="<<currentAmount1.size()<<std::endl;
                 int loop = currentAmount1.size() - 8;
-
-                    for(int i=1 ;i<=loop ;i++)
-                     {
-                        currentAmount1.pop_back();
-                     }
-                 
+                for(int i=1 ;i<=loop ;i++)
+                {
+                    currentAmount1.pop_back();
+                }  
+                
                  file<<currentAmount1;
                  file.close();
-           
                  file1<<s<<" "<<accountNumber<<" "<<name<<" "<<transferAmountS<<" "<<currentAmount1<<std::endl;
                  file1.close();
                  if(senderAccountNumber.size()<30)
                  {
-                         for(int i = 1 ; i<=22 ;i++)
-                         {
-                             senderAccountNumber.push_back(' ');
-                         }
+                     for(int i = 1 ; i<=22 ;i++)
+                     {
+                          senderAccountNumber.push_back(' ');
+                     }
                  }
                
-                
                  file2<<s<<" "<<"TRANSFER"<<" "<<senderAccountNumber<<" "<<transferAmountS<<" "<<currentAmount1<<std::endl;
                  file2.close();
         }  
@@ -962,61 +880,47 @@ void personalBanking::logEntry(std::string &accountNumber, double &currentAmount
                     std::cout<<"In while loop"<<std::endl;
                     file.seekg(222, std::ios::cur);
                     backtrack = file.tellp();
-
                     getline(file, accountNumber1, ' ');
-                     file.seekg(backtrack, std::ios::beg);
+                    file.seekg(backtrack, std::ios::beg);
                     std::cout<<"account i while11111 ="<<accountNumber1<<" acc22="<<accountNumber1<<std::endl;
-                   
                     if(accountNumber1 == senderAccountNumber)
                     {
                         file.seekg(9, std::ios::cur);
-                backtrack = file.tellg();
-                std::cout<<"tellg="<<backtrack<<std::endl;
-                backtrack = file.tellp();
+                        backtrack = file.tellg();
+                        std::cout<<"tellg="<<backtrack<<std::endl;
+                        backtrack = file.tellp();
+                        std::cout<<"tellp="<<file.tellp()<<std::endl;
+                        getline(file, currentAmount1, ' ');
+                        file.seekp(backtrack, std::ios::beg);
+                        std::cout<<"currentAmount:"<<currentAmount<<std::endl;
+                        double currentAmountDouble =  std::stod(currentAmount1);
+                        currentAmountDouble = currentAmountDouble + transferAmount;
+                        std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
+                        currentAmount1 = std::to_string(currentAmountDouble);
+                        std::cout<<"to string  currentAmountDouble="<<currentAmount1<<"and size ="<<currentAmount1.size()<<std::endl;
+                        int loop = currentAmount1.size() - 8;
+                        for(int i=1 ;i<=loop ;i++)
+                        {
+                            currentAmount1.pop_back();
+                        }
 
-                std::cout<<"tellp="<<file.tellp()<<std::endl;
-                getline(file, currentAmount1, ' ');
-                file.seekp(backtrack, std::ios::beg);
-                std::cout<<"currentAmount:"<<currentAmount<<std::endl;
-                double currentAmountDouble =  std::stod(currentAmount1);
-
-                currentAmountDouble = currentAmountDouble + transferAmount;
-
-                 std::cout<<"currentAmountDouble="<<currentAmountDouble<<std::endl;
-                 currentAmount1 = std::to_string(currentAmountDouble);
-                 std::cout<<"to string  currentAmountDouble="<<currentAmount1<<"and size ="<<currentAmount1.size()<<std::endl;
-
-                int loop = currentAmount1.size() - 8;
-
-                    for(int i=1 ;i<=loop ;i++)
-                     {
-                        currentAmount1.pop_back();
-                     }
-
-                 std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount1.size()<<std::endl;
-                 
-                  
-                 file<<currentAmount1;
-                 file.close();
-                 file1<<s<<" "<<accountNumber<<" "<<name<<" "<<transferAmountS<<" "<<currentAmount1<<std::endl;
-                 file1.close();
-                     
-                 if(senderAccountNumber.size()<30)
-                 {
-                         for(int i = 1 ; i<=22 ;i++)
-                         {
-                             senderAccountNumber.push_back(' ');
-                         }
-                 }
-
-                 file2<<s<<" "<<accountNumber<<" "<<senderAccountNumber<<" "<<transferAmountS<<" "<<currentAmount1<<std::endl;
-                 file2.close();
-                 break;    
-
+                        std::cout<<"to string ="<<currentAmount<<"and size ="<<currentAmount1.size()<<std::endl; 
+                        file<<currentAmount1;
+                        file.close();
+                        file1<<s<<" "<<accountNumber<<" "<<name<<" "<<transferAmountS<<" "<<currentAmount1<<std::endl;
+                        file1.close();
+                        if(senderAccountNumber.size()<30)
+                        {
+                             for(int i = 1 ; i<=22 ;i++)
+                             {
+                                senderAccountNumber.push_back(' ');
+                             }
+                        }
+                        file2<<s<<" "<<accountNumber<<" "<<senderAccountNumber<<" "<<transferAmountS<<" "<<currentAmount1<<std::endl;
+                        file2.close();
+                        break;    
                     }
                 }
             }
-
         }
-
 }
